@@ -1,29 +1,30 @@
 {
-  "name": "KOA2.0",
-  "version": "1.0.0",
-  "description": "Hello Koa 2 example with async",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js",
-    "hello": "node hello.js",
-    "router": "node router.js"
-  },
-  "keywords": [
-    "koa",
-    "async"
-  ],
-  "author": "Two Young",
-  "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "dependencies": {
-    "koa": "2.0.0",
-    "koa-bodyparser": "^4.3.0",
-    "koa-router": "7.0.0"
-  },
-  "devDependencies": {
-    "nunjucks": "^3.2.1"
-  }
+	"name": "KOA2.0",
+	"version": "1.0.0",
+	"description": "Hello Koa 2 example with async",
+	"main": "app.js",
+	"scripts": {
+		"start": "nodemon app.js",
+		"hello": "nodemon hello.js",
+		"router": "nodemon router.js"
+	},
+	"keywords": [
+		"koa",
+		"async"
+	],
+	"author": "Two Young",
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"dependencies": {
+		"koa": "2.0.0",
+		"koa-bodyparser": "^4.3.0",
+		"koa-router": "7.0.0",
+		"nodemon": "^2.0.4"
+	},
+	"devDependencies": {
+		"nunjucks": "^3.2.1"
+	}
 }
