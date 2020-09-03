@@ -1,14 +1,15 @@
 const Koa = require('koa');
-const bodyParser = require('koa-bodyparser');
+// const bodyParser = require('koa-bodyparser');
 const controller = require('./controller');
 const app = new Koa();
 const path = require('path');
 const koaNunjucks = require('koa-nunjucks-2');
+const static = require('koa-static'); //静态资源服务插件
 
 // 注册 bodyParser，必须在 router之前被注册
 // app.use(bodyParser());
 
-// 使用 koa-nunjucks-2 实例获得中间件
+// 配置 koa-nunjucks-2 模板中间件
 app.use(
 	koaNunjucks({
 		ext: 'html', // 使用HTML后缀的模板
@@ -19,6 +20,10 @@ app.use(
 		},
 	}),
 );
+
+// 配置静态web服务的中间件(多个);
+app.use(static(path.join(__dirname, '/static')));
+app.use(static(path.join(__dirname, '/public')));
 
 app.use(async (ctx, next) => {
 	// console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
