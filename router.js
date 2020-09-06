@@ -6,11 +6,11 @@ function addMapping(router, mapping) {
 		if (url.startsWith('GET')) {
 			var path = url.substring(4);
 			router.get(path, mapping[url]);
-			// console.log(`register URL mapping: GET ${path}`)
+			console.log(`register URL mapping: GET ${path}`);
 		} else if (url.startsWith('POST')) {
 			var path = url.substring(5);
 			router.post(path, mapping[url]);
-			// console.log(`register URL mapping: POST ${path}`)
+			console.log(`register URL mapping: POST ${path}`);
 		} else {
 			console.log('无效的 URL');
 		}

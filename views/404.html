@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="/css/index.css" />
-		<title>Document</title>
-	</head>
-	<body>
-		<img src="/images/big.jpg" alt="404" />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% include "./template/header.html" %}
+    <a href="/" rel="noopener noreferrer"
+      ><img src="/images/404.gif" alt="404"
+    /></a>
+    <div class="title">{{title}}</div>
+  </body>
 </html>
