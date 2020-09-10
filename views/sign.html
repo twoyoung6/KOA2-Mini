@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-	</head>
-	<body>
-		<h1>index</h1>
-		<form action="/doSign" method="post">
-			<p>Name: <input name="name" value="koa" /></p>
-			<p>Password: <input name="password" type="password" /></p>
-			<p><input type="submit" value="Submit" /></p>
-		</form>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% include "./template/header.html" %}
+    <h1>注册页</h1>
+    {% if (loginStatus) %}您已经登录过了,<a href="/" rel="noopener noreferrer"
+      >去首页看看</a
+    >
+    {% else %}
+    <form action="/doSign" method="post">
+      <p>Name: <input name="name" value="koa" /></p>
+      <p>Password: <input name="password" type="password" /></p>
+      <p><input type="submit" value="注册" /></p>
+    </form>
+    {% endif %}
+  </body>
 </html>
