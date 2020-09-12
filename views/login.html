@@ -7,15 +7,15 @@
   </head>
   <body>
     {% include "./template/header.html" %}
-    <h1>注册页</h1>
+    <h1>登录页</h1>
     {% if (loginStatus) %}您已经登录过了,<a href="/" rel="noopener noreferrer"
       >去首页看看</a
     >
     {% else %}
-    <form action="/doSign" method="post">
-      <p>Name: <input name="name" value="koa" /></p>
+    <form action="/doLogin" method="post">
+      <p>Name: <input name="name" value="twoyoung" /></p>
       <p>Password: <input name="password" type="password" /></p>
-      <p><input type="submit" value="注册" /></p>
+      <p><input type="submit" value="登录" /></p>
     </form>
     {% endif %}
   </body>

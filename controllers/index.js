@@ -1,15 +1,20 @@
 const session = require('koa-session')
-
-var fn_sign = async (ctx, next) => {
+// 默认首页
+var fn_home = async (ctx, next) => {
   let loginStatus = !!ctx.session.token
-  await ctx.render('sign', { loginStatus: loginStatus })
+  await ctx.render('index', { loginStatus: loginStatus })
 }
-
-var fn_doSign = async (ctx, next) => {
+// 登录页
+var fn_login = async (ctx, next) => {
+  let loginStatus = !!ctx.session.token
+  await ctx.render('login', { loginStatus: loginStatus })
+}
+// 登录状态展示页
+var fn_doLogin = async (ctx, next) => {
   var name = ctx.request.body.name || '',
     pw = ctx.request.body.password || ''
 
-  if (name == 'koa' && pw == '666') {
+  if (name == 'twoyoung' && pw == '666') {
     let arr = [
       {
         key: 'name',
@@ -31,14 +36,15 @@ var fn_doSign = async (ctx, next) => {
     })
     // 生成 session
     ctx.session.token = `${name}-_-||${pw}`
-    await ctx.render('dosign', { items: arr })
+    await ctx.render('doLogin', { items: arr })
   } else {
     ctx.response.body = `<h1>登录失败，请返回重新登录！</h1>
-    <p><a href="/sign">重新登录</a></p>`
+    <p><a href="/login">重新登录</a></p>`
   }
 }
 
 module.exports = {
-  'GET /sign': fn_sign,
-  'POST /doSign': fn_doSign,
+  'GET /': fn_home,
+  'GET /login': fn_login,
+  'POST /doLogin': fn_doLogin,
 }
