@@ -26,14 +26,16 @@ var fn_doLogin = async (ctx, next) => {
       },
     ]
     // ==============cookie 中间件==============
+    const cookieSet = {
+      domain: 'localhost', // cookie 写入的域名
+      path: '/', // 写入 cookie 的路径
+      maxAge: 10 * 60 * 1000, // cookie 时效
+      expires: new Date('2020-09-12'), // cookie 失效日期
+      httpOnly: false, // 是否开始 JavaScript 读取
+      overwrite: false, // 是否允许覆盖
+    }
     ctx.cookies.set('name', name, {})
-    ctx.cookies.set('password', pw, {
-      path: '',
-      domain: '',
-      expires: '', // max-age
-      httpOnly: true,
-      secure: '',
-    })
+    ctx.cookies.set('password', pw, cookieSet)
     // 生成 session
     ctx.session.token = `${name}-_-||${pw}`
     await ctx.render('doLogin', { items: arr })
