@@ -16,7 +16,7 @@ app.use(static(path.join(__dirname, '/static')))
 app.keys = ['some secret hurr']
 app.use(session(CONFIG, app))
 
-// 注册 bodyParser【将上下文的 formData数据解析到 ctx.request.body的中间件】必须在 router之前被注册
+// 注册 bodyParser【请求体 ctx.request.body 数据格式化的中间件】必须在 router之前被注册（koa 洋葱模型决定的）
 app.use(bodyParser())
 
 // ==============配置 koa-nunjucks-2 模板引擎中间件==============
