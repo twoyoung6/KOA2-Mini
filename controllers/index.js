@@ -1,4 +1,5 @@
 const session = require('koa-session')
+var DbClient = require('../module/db.js')
 // 默认首页
 var fn_home = async (ctx, next) => {
   let loginStatus = !!ctx.session.token
@@ -44,9 +45,16 @@ var fn_doLogin = async (ctx, next) => {
     <p><a href="/login">重新登录</a></p>`
   }
 }
-
+// 用户列表页
+var fn_userList = async (ctx, next) => {
+  let loginStatus = !!ctx.session.token
+  // Db查询操作
+  let result = await DbClient.find('koa2', {})
+  await ctx.render('userList', { list: result, loginStatus: loginStatus }) // 模板引擎渲染数据
+}
 module.exports = {
   'GET /': fn_home,
   'GET /login': fn_login,
+  'GET /userList': fn_userList,
   'POST /doLogin': fn_doLogin,
 }

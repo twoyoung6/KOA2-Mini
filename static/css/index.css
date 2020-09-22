@@ -35,7 +35,7 @@ a:visited,
 a:hover,
 a:active,
 a:focus {
-  /* text-decoration: none;; */
+  /* text-decoration: none; */
   color: #333;
   -webkit-tap-highlight-color: transparent;
 }
@@ -70,4 +70,45 @@ li {
   height: 100vh;
   background: url('../images/welcome.gif') no-repeat center center;
   background-size: contain;
+}
+.add {
+  margin: 0 auto;
+}
+.myTable {
+  margin: 0 auto;
+  height: 300px;
+  width: 75%;
+  border-collapse: collapse;
+}
+
+.myTitle {
+  background-color: #f2f3f5;
+}
+
+tr:hover {
+  background: #edffcf;
+}
+
+th {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+td {
+  font-size: 14px;
+}
+
+th,
+td {
+  border: solid 1px black;
+  text-align: center;
+}
+.myTable td a {
+  margin: 0 14px;
+  text-decoration: none;
+  padding: 4px 8px;
+  color: #fff;
+  background: #5026e7;
+  border-radius: 5px;
+  font-size: 12px;
 }

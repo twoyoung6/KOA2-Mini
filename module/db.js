@@ -24,18 +24,20 @@ class Db {
           if (err) {
             reject(err)
           }
-          console.log('Connected successfully to server')
+          console.log('Connected successfully to server...')
           _this.dbClient = client.db(config.dbName)
           resolve(_this.dbClient)
         })
+      } else {
+        resolve(_this.dbClient)
       }
     })
   }
-
+  // db 查询数据
   find(collectionName, json) {
     return new Promise((resolve, reject) => {
-      this.connect().then((db) => {
-        let res = db.collection(collectionName).find(json)
+      this.connect().then(async (db) => {
+        let res = await db.collection(collectionName).find(json)
         res.toArray((err, docs) => {
           if (err) {
             reject(err)
@@ -46,12 +48,49 @@ class Db {
       })
     })
   }
+  // db 插入数据
+  insert(collectionName, json) {
+    return new Promise((resolve, reject) => {
+      this.connect().then(async (db) => {
+        let res = await db.collection(collectionName).insertOne(json)
+        if (res.result.ok == 1) {
+          console.log('新增数据成功！')
+        } else {
+          console.log('数据新增失败！')
+        }
+      })
+    })
+  }
 
-  insert() {}
+  // db 更新修改数据
+  update(collectionName, newJson, oldJson) {
+    return new Promise((resolve, reject) => {
+      this.connect().then(async (db) => {
+        let res = await db
+          .collection(collectionName)
+          .updateOne(newJson, { $set: oldJson })
+        if (res.result.ok == 1) {
+          console.log('数据修改成功！')
+        } else {
+          console.log('数据修改失败！')
+        }
+      })
+    })
+  }
 
-  update() {}
-
-  delete() {}
+  // db 删除数据
+  delete(collectionName, json) {
+    return new Promise((resolve, reject) => {
+      this.connect().then(async (db) => {
+        let res = await db.collection(collectionName).removeOne(json)
+        if (res.result.ok == 1) {
+          console.log('删除数据成功！')
+        } else {
+          console.log('数据删除失败！')
+        }
+      })
+    })
+  }
 }
 
 module.exports = Db.getInstance()
