@@ -18,6 +18,14 @@ app.use(session(CONFIG, app))
 
 // 注册 bodyParser【请求体 ctx.request.body 数据格式化的中间件】必须在 router之前被注册（koa 洋葱模型决定的）
 app.use(bodyParser())
+var myDb = require('./module/db.js')
+
+// 查询
+async function query() {
+  let result = await myDb.find('koa2', { userName: 'twoyoung' })
+  console.log(result)
+}
+query()
 
 // ==============配置 koa-nunjucks-2 模板引擎中间件==============
 app.use(
