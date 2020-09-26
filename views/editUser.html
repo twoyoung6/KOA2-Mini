@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>编辑用户</title>
+  </head>
+  <body>
+    <form action="/doEditUser" method="post">
+      <p>
+        <label for="userName">ID:</label>
+        <input id="id" name="id" value="{{form.id}}" readonly />
+      </p>
+      <p>
+        <label for="userName">用户名:</label>
+        <input id="userName" name="userName" value="{{form.userName}}" />
+      </p>
+      <p>
+        <label for="age">年龄:</label>
+        <input id="age" name="age" value="{{form.age}}" type="number" />
+      </p>
+      <p><input type="submit" value="提交" /></p>
+    </form>
+  </body>
+</html>

@@ -7,18 +7,23 @@
   </head>
   <body>
     {% include "./template/header.html" %} {% if (loginStatus) %}
-    <a class="add" href="/addUser">新增用户</a>
+    <div class="add"><a href="/addUser">新增用户</a></div>
     <table class="myTable">
       <tr class="myTitle">
+        <th>ID</th>
         <th>姓名</th>
         <th>年龄</th>
         <th>操作</th>
       </tr>
       {% asyncEach item in list %}
       <tr>
+        <td>{{item.id}}</td>
         <td>{{item.userName}}</td>
         <td>{{item.age}}</td>
-        <td><a href="#">编辑</a><a href="#">删除</a></td>
+        <td>
+          <a href="/editUser?id={{item.id}}" class="edit">编辑</a>
+          <a href="/deleteUser?id={{item.id}}" class="delete">删除</a>
+        </td>
         {% endeach %}
       </tr>
     </table>
