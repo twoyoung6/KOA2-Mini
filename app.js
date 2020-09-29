@@ -53,4 +53,4 @@ app.use(async (ctx, next) => {
 app.use(router())
 
 app.listen(5000)
-console.log(`app is running at port 5000...`)
+console.log(`app is running at http://localhost:5000`)

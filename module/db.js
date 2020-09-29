@@ -27,7 +27,7 @@ class Db {
             if (err) {
               reject(err)
             }
-            console.log('Connected successfully to server...')
+            console.log('Connected successfully to DB server...')
             _this.dbClient = client.db(config.dbName)
             resolve(_this.dbClient)
           }
