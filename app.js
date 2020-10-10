@@ -69,5 +69,9 @@ app.use(async (ctx, next) => {
 // ==============注册路由中间件==============
 app.use(router())
 
+app.on("error", (err, ctx) => {// 捕获异常记录错误日志
+  console.log(new Date(), ":", err);
+});
+
 app.listen(5000)
 console.log(`app is running at port 5000...`)
