@@ -8,6 +8,12 @@
   <body>
     {% include "./template/header.html" %} {% if (loginStatus) %}
     <div class="home">
+      <div class="btnGroup">
+        <a href="/userList">用户管理</a>
+        <a href="#">新闻事件</a>
+        <a href="#">数据管理</a>
+        <a href="#">关于我们</a>
+      </div>
       <img src="images/login.gif" alt="未登录" />
       <div>您已经登录....</div>
     </div>
